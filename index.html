@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farhad Dönerladen – Türkische Küche in Fürstenfeldbruck</title>
+  <meta name="description" content="Farhad Dönerladen in Fürstenfeldbruck – authentischer Döner, frisches Hendl, Falafel & mehr. Halal. Kurt-Huber-Ring 13a. Mo–Sa geöffnet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red:       #c0392b;
+      --red-d:     #96281b;
+      --red-l:     #e74c3c;
+      --gold:      #d4a017;
+      --gold-l:    #f5c842;
+      --gold-pale: #fef9ec;
+      --teal:      #1a7a6e;
+      --teal-l:    #24a99a;
+      --cream:     #fdf6e3;
+      --warm:      #f9efe0;
+      --dark:      #1c0c02;
+      --mid:       #6b2d0f;
+      --text:      #2a1005;
+      --shadow:    rgba(28,12,2,0.18);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* ── ARABESQUE TILE BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(212,160,23,.05) 0, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(192,57,43,.04) 0, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top:0; left:0; right:0; z-index:1000;
+      height: 66px;
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+      border-bottom: 3px solid var(--gold);
+      box-shadow: 0 2px 20px rgba(0,0,0,.4);
+    }
+
+    .nav-logo {
+      font-family: 'Scheherazade New', serif;
+      font-size: 1.9rem;
+      color: var(--gold-l);
+      text-decoration: none;
+      letter-spacing: .02em;
+      line-height: 1;
+    }
+    .nav-logo span { color: var(--red-l); }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      color: #e8d8c0; font-size: .82rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; text-decoration: none;
+      transition: color .2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content:''; position:absolute; bottom:-4px; left:0; right:0;
+      height:2px; background: var(--gold);
+      transform: scaleX(0); transition: transform .25s;
+    }
+    .nav-links a:hover { color: var(--gold-l); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .hamburger {
+      display:none; flex-direction:column; gap:5px;
+      background:none; border:none; cursor:pointer; padding:4px;
+    }
+    .hamburger span { display:block; width:26px; height:2px; background:#e8d8c0; transition:all .3s; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+      padding: 100px 2rem 5rem;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(170deg, rgba(28,12,2,.88) 0%, rgba(107,45,15,.72) 50%, rgba(28,12,2,.92) 100%),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Istanbul_2013_%28cropped%29.jpg/1280px-Istanbul_2013_%28cropped%29.jpg')
+        center/cover no-repeat;
+    }
+
+    /* Arabesque SVG overlay */
+    .hero-bg::after {
+      content:'';
+      position:absolute; inset:0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Ccircle cx='40' cy='40' r='30' fill='none' stroke='rgba(212,160,23,0.07)' stroke-width='1'/%3E%3Ccircle cx='40' cy='40' r='20' fill='none' stroke='rgba(212,160,23,0.05)' stroke-width='1'/%3E%3Cpath d='M10,40 Q25,10 40,40 Q55,70 70,40' fill='none' stroke='rgba(212,160,23,0.06)' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: 80px 80px;
+    }
+
+    .hero-content { position:relative; z-index:2; }
+
+    .hero-arabic {
+      font-family: 'Scheherazade New', serif;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      color: var(--gold-l);
+      line-height: 1;
+      opacity: 0;
+      animation: fadeUp .9s .1s ease both;
+      text-shadow: 0 4px 20px rgba(0,0,0,.5);
+    }
+
+    .hero-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      text-shadow: 0 4px 30px rgba(0,0,0,.5);
+      opacity: 0;
+      animation: fadeUp .9s .3s ease both;
+    }
+    .hero-title span { color: var(--gold-l); }
+
+    .hero-tagline {
+      font-size: clamp(.95rem, 2.5vw, 1.25rem);
+      color: #e8d8c0;
+      font-weight: 300;
+      margin-top: .7rem;
+      letter-spacing: .04em;
+      opacity: 0;
+      animation: fadeUp .9s .5s ease both;
+    }
+
+    .hero-divider {
+      width: 140px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 1.5rem auto;
+      opacity:0; animation: fadeUp .9s .6s ease both;
+    }
+
+    .hero-badges {
+      display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;
+      opacity:0; animation: fadeUp .9s .7s ease both;
+    }
+    .badge {
+      padding: .45rem 1.1rem;
+      border: 1.5px solid rgba(212,160,23,.6);
+      border-radius: 99px;
+      color: var(--gold-l);
+      font-size: .78rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+    }
+
+    .hero-info {
+      display:flex; gap:2rem; justify-content:center; flex-wrap:wrap;
+      margin-top:1.5rem;
+      opacity:0; animation: fadeUp .9s .85s ease both;
+    }
+    .hero-info-item {
+      color:#e8d8c0; font-size:.9rem;
+      display:flex; align-items:center; gap:.45rem;
+    }
+
+    .hero-cta {
+      display:inline-flex; align-items:center; gap:.6rem;
+      margin-top:2rem;
+      padding:.9rem 2.2rem;
+      background: var(--red);
+      color:#fff; font-weight:800; font-size:.88rem;
+      letter-spacing:.1em; text-transform:uppercase; text-decoration:none;
+      border-radius:3px;
+      box-shadow: 0 4px 24px rgba(192,57,43,.45);
+      transition: background .2s, transform .2s, box-shadow .2s;
+      opacity:0; animation: fadeUp .9s 1s ease both, pulse-red 3s 2.2s ease-in-out infinite;
+    }
+    .hero-cta:hover {
+      background: var(--red-d);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(192,57,43,.6);
+    }
+
+    /* ── ORNAMENT STRIPE ── */
+    .stripe {
+      height: 22px;
+      background: repeating-linear-gradient(90deg,
+        var(--red) 0px, var(--red) 22px,
+        var(--gold) 22px, var(--gold) 44px,
+        var(--teal) 44px, var(--teal) 66px,
+        var(--gold) 66px, var(--gold) 88px);
+      position: relative; z-index:1;
+    }
+
+    /* ── SECTIONS ── */
+    section { position:relative; z-index:1; }
+
+    .section-inner {
+      max-width: 1100px; margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      font-family: 'Scheherazade New', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--red-d);
+      text-align: center; margin-bottom: .4rem;
+    }
+
+    .section-line {
+      display:flex; align-items:center; justify-content:center; gap:1rem;
+      margin-bottom: 3rem;
+    }
+    .section-line::before, .section-line::after {
+      content:''; flex:1; max-width:160px; height:1px;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .section-line::after { background: linear-gradient(90deg, var(--gold), transparent); }
+    .section-line span { color:var(--gold); font-size:1.3rem; }
+
+    /* ── ÜBER UNS ── */
+    #ueber { background: var(--dark); color:#e8d8c0; }
+    #ueber .section-title { color: var(--gold-l); }
+
+    .ueber-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+    }
+
+    .ueber-text p {
+      font-size:1.02rem; line-height:1.9; color:#d8c8b0;
+      margin-bottom:1.1rem;
+    }
+    .ueber-text strong { color: var(--gold-l); }
+
+    .ueber-features {
+      display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:2rem;
+    }
+    .feat {
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(212,160,23,.2);
+      border-radius:6px; padding:1.1rem; text-align:center;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+    .feat:hover {
+      background:rgba(212,160,23,.1); border-color:var(--gold);
+      transform: translateY(-3px);
+    }
+    .feat .fi { font-size:1.7rem; display:block; margin-bottom:.4rem; }
+    .feat h4 { font-size:.8rem; letter-spacing:.07em; text-transform:uppercase; color:var(--gold-l); }
+
+    .img-card {
+      border-radius:6px; overflow:hidden;
+      border:3px solid var(--gold);
+      box-shadow: 0 8px 40px rgba(0,0,0,.45);
+    }
+    .img-card img { width:100%; height:300px; object-fit:cover; display:block; }
+    .img-caption {
+      text-align:center; font-size:.73rem;
+      color:rgba(212,160,23,.5); padding:.5rem;
+      font-style:italic; background: rgba(255,255,255,.04);
+    }
+
+    /* ── SPEISEKARTE ── */
+    #speisekarte { background: var(--warm); }
+
+    .menu-tabs {
+      display:flex; flex-wrap:wrap; gap:.5rem;
+      justify-content:center; margin-bottom:2.5rem;
+    }
+    .menu-tab {
+      padding:.5rem 1.2rem;
+      background:transparent;
+      border:2px solid var(--red);
+      color:var(--red-d); font-family:'Nunito',sans-serif;
+      font-weight:700; font-size:.78rem; letter-spacing:.07em;
+      text-transform:uppercase; cursor:pointer; border-radius:3px;
+      transition: all .2s;
+    }
+    .menu-tab:hover, .menu-tab.active {
+      background:var(--red); color:#fff;
+    }
+
+    .menu-panel { display:none; }
+    .menu-panel.active { display:block; animation: fadeIn .4s ease; }
+
+    .menu-items { max-width:740px; margin:0 auto; }
+
+    .menu-item {
+      display:flex; justify-content:space-between; align-items:baseline;
+      padding:.85rem 0; border-bottom:1px dashed rgba(107,45,15,.2); gap:1rem;
+      transition: all .15s;
+    }
+    .menu-item:hover {
+      background:rgba(212,160,23,.07);
+      margin:0 -.5rem; padding:.85rem .5rem;
+    }
+    .menu-item-name {
+      font-weight:700; font-size:.98rem; color:var(--dark);
+    }
+    .menu-item-desc {
+      display:block; font-size:.78rem; color:var(--mid);
+      font-style:italic; margin-top:.15rem;
+    }
+    .menu-item-price {
+      font-weight:800; color:var(--red-d); white-space:nowrap; font-size:1rem;
+    }
+    .halal-badge {
+      display:inline-block; background:var(--teal); color:#fff;
+      font-size:.62rem; font-weight:700; padding:.1rem .45rem;
+      border-radius:99px; letter-spacing:.05em; margin-left:.4rem; vertical-align:middle;
+    }
+
+    /* ── FOTOS ── */
+    #fotos { background: var(--cream); }
+
+    .photo-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem;
+    }
+    .photo-item {
+      border-radius:6px; overflow:hidden;
+      border:2px solid rgba(212,160,23,.3);
+      box-shadow:0 4px 18px var(--shadow);
+      transition:transform .3s, box-shadow .3s, border-color .3s;
+      cursor:pointer;
+    }
+    .photo-item:hover {
+      transform:translateY(-6px) scale(1.01);
+      box-shadow:0 14px 40px rgba(28,12,2,.22);
+      border-color:var(--gold);
+    }
+    .photo-item img {
+      width:100%; height:210px; object-fit:cover; display:block;
+      transition:transform .5s;
+    }
+    .photo-item:hover img { transform:scale(1.05); }
+    .photo-caption {
+      text-align:center; font-size:.7rem;
+      color:rgba(107,45,15,.55); padding:.45rem .3rem .55rem;
+      font-style:italic; background:var(--warm);
+    }
+
+    /* ── BEWERTUNGEN ── */
+    #bewertungen { background: var(--dark); color:#e8d8c0; }
+    #bewertungen .section-title { color:var(--gold-l); }
+
+    .reviews-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;
+    }
+    .review-card {
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(212,160,23,.2);
+      border-radius:6px; padding:1.4rem;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+    .review-card:hover {
+      background:rgba(212,160,23,.07);
+      border-color:var(--gold);
+      transform:translateY(-4px);
+    }
+    .review-stars { color:var(--gold-l); font-size:1rem; margin-bottom:.5rem; }
+    .review-text {
+      font-style:italic; color:#c8b8a0; line-height:1.7;
+      font-size:.88rem; margin-bottom:.6rem;
+    }
+    .review-author { font-size:.78rem; color:var(--gold); font-weight:700; }
+    .review-date { font-size:.72rem; color:rgba(200,184,160,.5); margin-top:.15rem; }
+
+    .rating-box {
+      text-align:center; margin-bottom:3rem;
+    }
+    .rating-big {
+      font-family:'Scheherazade New',serif;
+      font-size:4rem; color:var(--gold-l); line-height:1;
+    }
+    .rating-stars { color:var(--gold-l); font-size:1.5rem; margin:.3rem 0; }
+    .rating-count { font-size:.85rem; color:#a89070; }
+
+    /* ── ANFAHRT ── */
+    #anfahrt { background: var(--warm); }
+
+    .anfahrt-grid {
+      display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start;
+    }
+
+    .kontakt-box {
+      background:#fff;
+      border:1px solid rgba(212,160,23,.3);
+      border-radius:6px; padding:2rem;
+      box-shadow:0 4px 20px var(--shadow);
+    }
+    .kontakt-box h3 {
+      font-family:'Scheherazade New',serif; font-size:1.5rem;
+      color:var(--red-d); margin-bottom:1.3rem;
+      border-bottom:1px solid rgba(212,160,23,.3); padding-bottom:.7rem;
+    }
+    .kontakt-row {
+      display:flex; gap:1rem; margin-bottom:1rem; align-items:flex-start;
+    }
+    .kontakt-row .ki { font-size:1.1rem; margin-top:.1rem; flex-shrink:0; }
+    .kontakt-row div { font-size:.92rem; line-height:1.6; color:var(--mid); }
+    .kontakt-row a { color:var(--red); text-decoration:none; font-weight:700; }
+    .kontakt-row a:hover { text-decoration:underline; }
+
+    .oeffnung-table { width:100%; border-collapse:collapse; margin-top:.4rem; }
+    .oeffnung-table td {
+      padding:.38rem 0; font-size:.88rem;
+      color:var(--mid); border-bottom:1px solid rgba(212,160,23,.12);
+    }
+    .oeffnung-table td:last-child {
+      text-align:right; color:var(--red-d); font-weight:800;
+    }
+    .oeffnung-table tr.special td { color:var(--teal); }
+    .oeffnung-table tr.special td:last-child { color:var(--teal); }
+
+    .map-container {
+      border-radius:6px; overflow:hidden;
+      border:3px solid var(--gold);
+      box-shadow:0 8px 32px rgba(28,12,2,.25);
+    }
+    .map-container iframe {
+      width:100%; height:380px; display:block; border:none;
+    }
+
+    /* ── FACEBOOK ── */
+    #social { background: var(--cream); }
+
+    .social-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+
+    .fb-wrap {
+      border:2px solid rgba(212,160,23,.35);
+      border-radius:6px; overflow:hidden;
+      box-shadow:0 4px 20px var(--shadow);
+    }
+    .fb-wrap iframe { width:100%; min-height:400px; display:block; border:none; }
+
+    .info-panel { }
+    .info-panel h3 {
+      font-family:'Scheherazade New',serif; font-size:1.6rem;
+      color:var(--red-d); margin-bottom:1.2rem;
+    }
+
+    .info-card {
+      background:#fff; border-left:4px solid var(--gold);
+      border-radius:0 6px 6px 0;
+      padding:1rem 1.3rem; margin-bottom:1rem;
+      box-shadow:0 2px 10px var(--shadow);
+      transition:transform .2s;
+    }
+    .info-card:hover { transform:translateX(4px); }
+    .info-card .ic-title { font-weight:800; color:var(--dark); font-size:.9rem; margin-bottom:.3rem; }
+    .info-card p { font-size:.85rem; color:var(--mid); line-height:1.6; }
+
+    /* ── FOOTER ── */
+    footer {
+      background:var(--dark); color:#a89070;
+      text-align:center; padding:2.5rem 2rem;
+      border-top:3px solid var(--gold);
+    }
+    .footer-logo {
+      font-family:'Scheherazade New',serif; font-size:2rem;
+      color:var(--gold-l); display:block; margin-bottom:.6rem;
+    }
+    footer p { font-size:.8rem; color:rgba(168,144,112,.55); margin-top:.3rem; }
+    footer a { color:var(--gold-l); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity:0; transform:translateY(28px);
+      transition:opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity:1; transform:none; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity:0; } to { opacity:1; }
+    }
+    @keyframes pulse-red {
+      0%,100% { box-shadow:0 4px 24px rgba(192,57,43,.45); }
+      50%      { box-shadow:0 4px 40px rgba(192,57,43,.7); }
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width:8px; }
+    ::-webkit-scrollbar-track { background:var(--dark); }
+    ::-webkit-scrollbar-thumb { background:var(--gold); border-radius:4px; }
+
+    /* ── MOBILE ── */
+    @media (max-width:900px) {
+      .nav-links {
+        position:fixed; top:66px; left:0; right:0;
+        background:var(--dark); flex-direction:column; gap:0;
+        padding:1rem 0; border-bottom:2px solid var(--gold);
+        transform:translateY(-110%); opacity:0; pointer-events:none;
+        transition:transform .3s ease, opacity .3s;
+      }
+      .nav-links.open { transform:translateY(0); opacity:1; pointer-events:all; }
+      .nav-links a { display:block; padding:.85rem 2rem; border-bottom:1px solid rgba(255,255,255,.06); }
+      .hamburger { display:flex; }
+      .ueber-grid, .anfahrt-grid, .social-grid { grid-template-columns:1fr; gap:2rem; }
+      .ueber-features { grid-template-columns:1fr 1fr; }
+      .photo-grid { grid-template-columns:1fr 1fr; }
+      .reviews-grid { grid-template-columns:1fr; }
+    }
+
+    @media (max-width:560px) {
+      .photo-grid { grid-template-columns:1fr; }
+      .ueber-features { grid-template-columns:1fr; }
+      .hero-info { flex-direction:column; gap:.7rem; align-items:center; }
+      .hero-badges { gap:.5rem; }
+      .menu-tab { font-size:.7rem; padding:.42rem .85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAV ════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">فرهاد <span>Farhad</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#ueber"       onclick="closeNav()">Über uns</a></li>
+    <li><a href="#speisekarte" onclick="closeNav()">Speisekarte</a></li>
+    <li><a href="#fotos"       onclick="closeNav()">Fotos</a></li>
+    <li><a href="#bewertungen" onclick="closeNav()">Bewertungen</a></li>
+    <li><a href="#anfahrt"     onclick="closeNav()">Anfahrt</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ════════ HERO ════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-arabic">فرهاد دونر</div>
+    <h1 class="hero-title">Farhad <span>Dönerladen</span></h1>
+    <p class="hero-tagline">Authentische türkische Küche – frisch, halal &amp; mit Herz gemacht</p>
+    <div class="hero-divider"></div>
+    <div class="hero-badges">
+      <span class="badge">🥩 Halal</span>
+      <span class="badge">🌿 Frische Zutaten</span>
+      <span class="badge">🌯 Döner &amp; Mehr</span>
+      <span class="badge">🐔 Hendl &amp; Falafel</span>
+    </div>
+    <div class="hero-info">
+      <span class="hero-info-item">📍 Kurt-Huber-Ring 13a, FFB</span>
+      <span class="hero-info-item">🕙 Mo–Fr: 09:00–20:00 Uhr</span>
+      <span class="hero-info-item">🕙 Sa: 09:00–24:00 Uhr</span>
+      <span class="hero-info-item">📞 +49 179 453 7907</span>
+    </div>
+    <a href="#speisekarte" class="hero-cta">🌯 Zur Speisekarte</a>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ════════ ÜBER UNS ════════ -->
+<section id="ueber">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Über uns</h2>
+    <div class="section-line reveal"><span>✦</span></div>
+    <div class="ueber-grid">
+      <div class="ueber-text reveal">
+        <p>Willkommen beim <strong>Farhad Dönerladen</strong> in Fürstenfeldbruck! Wir sind Ihr Anlaufpunkt für authentische türkische Küche – zubereitet mit frischen Zutaten, echtem Handwerk und der Leidenschaft, die jedes Gericht zu einem besonderen Erlebnis macht.</p>
+        <p>Bei uns gibt es nicht einfach Döner – wir stecken jeden einzelnen <strong>selbst</strong>, verwenden <strong>kein Klebefleisch</strong> und frisches, knackiges Gemüse. Ob klassischer Dönerteller, saftiges gegrilltes Hendl, knusprige Falafel oder herzhafte Hamburger – für jeden ist etwas dabei.</p>
+        <p>Alle unsere Fleischprodukte sind <strong>halal</strong> zertifiziert. Kommen Sie vorbei und überzeugen Sie sich selbst vom Geschmack!</p>
+        <div class="ueber-features">
+          <div class="feat"><span class="fi">🥩</span><h4>Halal zertifiziert</h4></div>
+          <div class="feat"><span class="fi">🌿</span><h4>Frisches Gemüse</h4></div>
+          <div class="feat"><span class="fi">🔥</span><h4>Frisch gegrillt</h4></div>
+          <div class="feat"><span class="fi">🤝</span><h4>Familienbetrieb</h4></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="img-card">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Doner_Kebab_FoodKing.jpg/1280px-Doner_Kebab_FoodKing.jpg"
+            alt="Döner Kebab frisch zubereitet"
+            onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Shawarma_Palace.jpg/640px-Shawarma_Palace.jpg'">
+        </div>
+        <p class="img-caption">hier könnten Ihre Bilder sein</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ════════ SPEISEKARTE ════════ -->
+<section id="speisekarte">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Speisekarte</h2>
+    <div class="section-line reveal"><span>✦</span></div>
+
+    <div class="menu-tabs reveal">
+      <button class="menu-tab active" onclick="showTab('doener')">🌯 Döner & Dürüm</button>
+      <button class="menu-tab" onclick="showTab('hendl')">🍗 Hendl</button>
+      <button class="menu-tab" onclick="showTab('burger')">🍔 Burger</button>
+      <button class="menu-tab" onclick="showTab('falafel')">🧆 Falafel & Veggie</button>
+      <button class="menu-tab" onclick="showTab('beilagen')">🍟 Beilagen</button>
+    </div>
+
+    <!-- Döner -->
+    <div class="menu-panel active" id="tab-doener">
+      <div class="menu-items">
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Döner im Brot <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Selbst gesteckter Döner mit frischem Salat & Soße im Fladenbrot</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Döner im Dürüm <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Gerolltes Fladenbrot mit Dönerfleisch, Salat & Joghurtsauce</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Döner-Teller <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Mit Salat, Pommes oder Reis und Soße</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Iskender Döner <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Dönerfleisch auf Fladenbrot mit Tomatensauce & Joghurt</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Lahmacun <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Türkische Fladenbrot-Pizza mit Hackfleisch</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Pide <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Türkisches Fladenbrot mit verschiedenen Belägen</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:1.5rem;font-size:.82rem;color:var(--mid);font-style:italic;">
+        💡 Aktuelle Preise direkt im Laden oder telefonisch unter +49 179 453 7907
+      </p>
+    </div>
+
+    <!-- Hendl -->
+    <div class="menu-panel" id="tab-hendl">
+      <div class="menu-items">
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Halbes Hendl <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Saftig gegrilltes halbes Hähnchen</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Ganzes Hendl <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Ganzes gegrilltes Hähnchen – für den großen Hunger</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Hendl im Dürüm <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Gegrilltes Hendl gerollt im Fladenbrot mit Salat</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Hendl-Teller <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Mit Pommes, Salat und Soße</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burger -->
+    <div class="menu-panel" id="tab-burger">
+      <div class="menu-items">
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Farhad Burger <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Mit Rindfleisch-Patty, Salat, Tomaten, Zwiebeln & Soße</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Chicken Burger <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Knuspriges Hähnchenfilet im Brioche-Bun</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Hamburger Menü <span class="halal-badge">halal</span></span>
+            <span class="menu-item-desc">Burger + Pommes + Getränk nach Wahl</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Falafel -->
+    <div class="menu-panel" id="tab-falafel">
+      <div class="menu-items">
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Falafel im Brot 🌱</span>
+            <span class="menu-item-desc">Knusprige Kichererbsenbällchen mit Salat & Tahini</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Falafel Dürüm 🌱</span>
+            <span class="menu-item-desc">Falafel gerollt im Fladenbrot – vegan möglich</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Falafel-Teller 🌱</span>
+            <span class="menu-item-desc">Mit Hummus, Tabbouleh & frischem Fladenbrot</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+        <div class="menu-item">
+          <div>
+            <span class="menu-item-name">Gemischter Salat 🌿</span>
+            <span class="menu-item-desc">Frischer Salat der Saison mit hausgemachtem Dressing</span>
+          </div>
+          <span class="menu-item-price">auf Anfrage</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beilagen -->
+    <div class="menu-panel" id="tab-beilagen">
+      <div class="menu-items">
+        <div class="menu-item"><div><span class="menu-item-name">Pommes Frites</span></div><span class="menu-item-price">auf Anfrage</span></div>
+        <div class="menu-item"><div><span class="menu-item-name">Reis</span><span class="menu-item-desc">Türkischer Pilaw-Reis</span></div><span class="menu-item-price">auf Anfrage</span></div>
+        <div class="menu-item"><div><span class="menu-item-name">Hausgemachte Soße</span><span class="menu-item-desc">Joghurt, scharf, Knoblauch oder Kräuter</span></div><span class="menu-item-price">auf Anfrage</span></div>
+        <div class="menu-item"><div><span class="menu-item-name">Getränke</span><span class="menu-item-desc">Cola, Fanta, Wasser, Ayran, Bier u.v.m.</span></div><span class="menu-item-price">auf Anfrage</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ════════ FOTOS ════════ -->
+<section id="fotos">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Eindrücke</h2>
+    <div class="section-line reveal"><span>✦</span></div>
+    <div class="photo-grid">
+
+      <div class="photo-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Doner_Kebab_FoodKing.jpg/800px-Doner_Kebab_FoodKing.jpg"
+          alt="Döner Kebab" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Shawarma_Palace.jpg/640px-Shawarma_Palace.jpg'">
+        <div class="photo-caption">hier könnten Ihre Bilder sein</div>
+      </div>
+
+      <div class="photo-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/PNG_transparent_background_grilled_chicken.png/800px-PNG_transparent_background_grilled_chicken.png"
+          alt="Gegrilltes Hendl"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Grilled_chicken_dinner.jpg/640px-Grilled_chicken_dinner.jpg'">
+        <div class="photo-caption">hier könnten Ihre Bilder sein</div>
+      </div>
+
+      <div class="photo-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Falafel_balls.jpg/800px-Falafel_balls.jpg"
+          alt="Frische Falafel"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Falafel.jpg/640px-Falafel.jpg'">
+        <div class="photo-caption">hier könnten Ihre Bilder sein</div>
+      </div>
+
+      <div class="photo-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mezze_selection.jpg/800px-Mezze_selection.jpg"
+          alt="Türkische Mezze"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Mezze.jpg/640px-Mezze.jpg'">
+        <div class="photo-caption">hier könnten Ihre Bilder sein</div>
+      </div>
+
+      <div class="photo-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Camii_Sultanahmet.jpg/800px-Camii_Sultanahmet.jpg"
+          alt="Istanbul – Türkische Kultur"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Istanbul_2013_%28cropped%29.jpg/640px-Istanbul_2013_%28cropped%29.jpg'">
+        <div class="photo-caption">hier könnten Ihre Bilder sein</div>
+      </div>
+
+      <div class="photo-item reveal">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lahmacun_with_Ayran.jpg/800px-Lahmacun_with_Ayran.jpg"
+          alt="Lahmacun mit Ayran"
+          onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Lahmacun.jpg/640px-Lahmacun.jpg'">
+        <div class="photo-caption">hier könnten Ihre Bilder sein</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ════════ BEWERTUNGEN ════════ -->
+<section id="bewertungen">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Was unsere Gäste sagen</h2>
+    <div class="section-line reveal"><span>✦</span></div>
+
+    <div class="rating-box reveal">
+      <div class="rating-big">4.4</div>
+      <div class="rating-stars">★★★★½</div>
+      <div class="rating-count">Basierend auf über 437 Bewertungen · Google &amp; Restaurant Guru</div>
+    </div>
+
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Nicht nur der äußere Eindruck ist hier perfekt. Alles ist außergewöhnlich sauber, die Speisen werden perfekt präsentiert und schmecken genau so, wie man es sich vorstellt. Das freundliche Auftreten der Mitarbeiter rundet den perfekten Gesamteindruck ab."</p>
+        <div class="review-author">Torsten E.</div>
+        <div class="review-date">Google Bewertung</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Halal and very tasty food. Doner is not from minced meat. Service is fast and polite. MashaAllah."</p>
+        <div class="review-author">H. Fevzi K.</div>
+        <div class="review-date">Google Bewertung</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Always a good choice in FFB. Very constant high quality. Never had a complaint. The founder is still active and looks for his guests!"</p>
+        <div class="review-author">Jens G. J.</div>
+        <div class="review-date">Google Bewertung</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Best for halal food in FFB. Prices are nominal. Food quality and taste is great."</p>
+        <div class="review-author">Halal-Food Gast</div>
+        <div class="review-date">Google Bewertung</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★☆</div>
+        <p class="review-text">„Döner und Dürüm waren geschmacklich sehr gut. Das Personal war freundlich und der Service schnell."</p>
+        <div class="review-author">Boma D.</div>
+        <div class="review-date">Restaurant Guru</div>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">„Atmosphäre spektakulär, Personal gutgelaunt, vernünftige Preise. Einer der besten Dönerläden in der Region!"</p>
+        <div class="review-author">Restaurant Guru Gast</div>
+        <div class="review-date">Restaurant Guru · 4.4 / 5</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ════════ SOCIAL / FACEBOOK ════════ -->
+<section id="social">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Folgen Sie uns</h2>
+    <div class="section-line reveal"><span>✦</span></div>
+    <div class="social-grid">
+
+      <div class="reveal">
+        <h3 style="font-family:'Scheherazade New',serif;color:var(--red-d);font-size:1.5rem;margin-bottom:1rem;">🔵 Facebook</h3>
+        <div class="fb-wrap">
+          <iframe
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffarhad.doener.ffb&tabs=timeline&width=500&height=420&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            title="Farhad Dönerladen Facebook">
+          </iframe>
+        </div>
+        <p style="font-size:.78rem;color:var(--mid);margin-top:.7rem;font-style:italic;">
+          Falls der Feed nicht lädt: Besuchen Sie uns direkt auf
+          <a href="https://www.facebook.com/farhad.doener.ffb" target="_blank" rel="noopener" style="color:var(--red);font-weight:700;">Facebook</a>.
+        </p>
+      </div>
+
+      <div class="info-panel reveal">
+        <h3>Schnell &amp; Einfach bestellen</h3>
+
+        <div class="info-card">
+          <div class="ic-title">📞 Telefonisch bestellen</div>
+          <p>Rufen Sie uns einfach an – wir bereiten Ihre Bestellung frisch zu:<br>
+          <a href="tel:+491794537907" style="color:var(--red);font-weight:700;">+49 179 453 7907</a></p>
+        </div>
+
+        <div class="info-card">
+          <div class="ic-title">🚗 Kostenlose Parkplätze</div>
+          <p>Direkt vor dem Laden stehen Ihnen kostenlose Parkplätze zur Verfügung.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="ic-title">🌿 Vegetarisch &amp; Vegan</div>
+          <p>Falafel-Optionen für Vegetarier und Veganer verfügbar. Bitte bei der Bestellung nachfragen.</p>
+        </div>
+
+        <div class="info-card">
+          <div class="ic-title">✅ Halal zertifiziert</div>
+          <p>Alle Fleischprodukte sind halal. Kein Klebefleisch – frisch &amp; original.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ════════ ANFAHRT ════════ -->
+<section id="anfahrt">
+  <div class="section-inner">
+    <h2 class="section-title reveal">Anfahrt &amp; Kontakt</h2>
+    <div class="section-line reveal"><span>✦</span></div>
+
+    <div class="anfahrt-grid">
+
+      <div>
+        <div class="kontakt-box reveal">
+          <h3>📋 Kontaktdaten</h3>
+          <div class="kontakt-row">
+            <span class="ki">📍</span>
+            <div>Kurt-Huber-Ring 13a<br>82256 Fürstenfeldbruck<br><em style="font-size:.78rem;opacity:.6">Buchenau, nahe Stadtzentrum</em></div>
+          </div>
+          <div class="kontakt-row">
+            <span class="ki">📞</span>
+            <div><a href="tel:+491794537907">+49 179 453 7907</a></div>
+          </div>
+          <div class="kontakt-row">
+            <span class="ki">🌐</span>
+            <div><a href="https://xn--farhad-dner-yfb.de" target="_blank" rel="noopener">farhad-döner.de</a></div>
+          </div>
+        </div>
+
+        <div class="kontakt-box reveal" style="margin-top:1.4rem">
+          <h3>🕰️ Öffnungszeiten</h3>
+          <table class="oeffnung-table">
+            <tr><td>Montag</td><td>09:00 – 20:00 Uhr</td></tr>
+            <tr><td>Dienstag</td><td>09:00 – 20:00 Uhr</td></tr>
+            <tr><td>Mittwoch</td><td>09:00 – 20:00 Uhr</td></tr>
+            <tr><td>Donnerstag</td><td>09:00 – 20:00 Uhr</td></tr>
+            <tr><td>Freitag</td><td>09:00 – 20:00 Uhr</td></tr>
+            <tr class="special"><td>Samstag</td><td>09:00 – 24:00 Uhr ✨</td></tr>
+          </table>
+          <p style="margin-top:.9rem;font-size:.78rem;color:var(--teal);font-weight:700">
+            ✨ Am Samstag bis Mitternacht für Sie geöffnet!
+          </p>
+        </div>
+      </div>
+
+      <!-- Google Maps -->
+      <div class="reveal">
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2661.5!2d11.2485!3d48.1756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479e76f0e0e0e0e0%3A0x0!2sKurt-Huber-Ring+13a%2C+82256+F%C3%BCrstenfeldbruck!5e0!3m2!1sde!2sde!4v1699999999999!5m2!1sde!2sde"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Farhad Dönerladen – Kurt-Huber-Ring 13a, Fürstenfeldbruck"
+          ></iframe>
+        </div>
+        <p style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--mid);font-style:italic;">
+          Kurt-Huber-Ring 13a · 82256 Fürstenfeldbruck · Kostenlose Parkplätze vorhanden
+        </p>
+        <div style="text-align:center;margin-top:1rem;">
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Kurt-Huber-Ring+13a%2C+82256+F%C3%BCrstenfeldbruck"
+            target="_blank" rel="noopener"
+            style="display:inline-block;padding:.75rem 2rem;background:var(--red);color:#fff;font-weight:800;font-size:.82rem;letter-spacing:.08em;text-decoration:none;border-radius:3px;text-transform:uppercase;transition:background .2s;"
+            onmouseover="this.style.background='var(--red-d)'"
+            onmouseout="this.style.background='var(--red)'"
+          >
+            🗺️ Route planen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <span class="footer-logo">فرهاد دونر · Farhad Dönerladen</span>
+  <div class="stripe" style="width:100px;height:10px;margin:.8rem auto;border-radius:3px;"></div>
+  <p>Kurt-Huber-Ring 13a · 82256 Fürstenfeldbruck · Tel.: <a href="tel:+491794537907">+49 179 453 7907</a></p>
+  <p style="margin-top:.5rem">Mo–Fr: 09:00–20:00 Uhr &nbsp;|&nbsp; Sa: 09:00–24:00 Uhr &nbsp;|&nbsp; So: geschlossen</p>
+  <p style="margin-top:1rem">© Farhad Dönerladen Fürstenfeldbruck · Alle Angaben ohne Gewähr</p>
+</footer>
+
+<!-- ════════ SCRIPTS ════════ -->
+<script>
+  // NAV
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeNav() {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+  document.addEventListener('click', e => {
+    if (!e.target.closest('nav')) closeNav();
+  });
+
+  // TABS
+  function showTab(name) {
+    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  // SCROLL REVEAL
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // stagger siblings
+        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+        siblings.forEach((el, i) => { el.style.transitionDelay = (i * 0.09) + 's'; });
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // SMOOTH SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const el = document.querySelector(this.getAttribute('href'));
+      if (el) {
+        e.preventDefault();
+        window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 66, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
